@@ -3,12 +3,16 @@
 
 class FBullCowGame {
 public:
-	void Reset(); //make a return value
-	int GetMaxTries();
-	int GetCurrentTry();
-	bool IsGameWon();
-	bool CheckGuessValidity(std::string); //make a return value
+	FBullCowGame(); // constructor
+
+	int GetMaxTries() const;
+	int GetCurrentTry() const;
+	bool IsGameWon() const;
+
+	void Reset(); // make a return value
+	bool CheckGuessValidity(std::string); // make a return value
 private:
+	// initialization in constructor
 	int MyCurrentTry;
 	int MyMaxTries;
 };
