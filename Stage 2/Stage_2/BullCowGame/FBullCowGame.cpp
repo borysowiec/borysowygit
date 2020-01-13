@@ -6,18 +6,19 @@ using int32 = int;
 
 FBullCowGame::FBullCowGame() { Reset(); }
 
-int32 FBullCowGame::GetMaxTries() const { return MyMaxTries; }
 int32 FBullCowGame::GetCurrentTry() const { return MyCurrentTry; }
 int32 FBullCowGame::GetHiddenWordLength() const { return MyHiddenWord.length(); }
 bool FBullCowGame::IsGameWon() const { return bGameIsWon; }
 
+int32 FBullCowGame::GetMaxTries() const {
+	TMap<int32, int32> WordLenghtToMaxTries{ {3,4}, {4,7}, {5,10}, {6,16}, {7,20} };
+	return WordLenghtToMaxTries[MyHiddenWord.length()];
+}
+
 void FBullCowGame::Reset()
 {
-	constexpr int32 MAX_TRIES = 8;
 	const FString HIDDEN_WORD = "borys";
-
-	MyMaxTries = MAX_TRIES;
-	MyHiddenWord = HIDDEN_WORD;
+		MyHiddenWord = HIDDEN_WORD;
 	MyCurrentTry = 1;
 	bGameIsWon = false;
 	return;
